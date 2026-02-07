@@ -3,9 +3,9 @@ name: Prettier & Build CI
 # Run when code is pushed or a pull request is opened
 on:
   push:
-    branches: ["main", "master"]
+    branches: ['main', 'master']
   pull_request:
-    branches: ["main", "master"]
+    branches: ['main', 'master']
 
 jobs:
   check-prettier:
@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"   # Make sure this matches your project
+          node-version: '18' # Make sure this matches your project
 
       # 3. Install dependencies
       - name: Install dependencies
@@ -43,7 +43,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: '18'
 
       - name: Install dependencies
         run: npm ci
