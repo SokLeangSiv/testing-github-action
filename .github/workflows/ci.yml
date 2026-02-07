@@ -3,9 +3,9 @@ name: Prettier & Build CI
 # Run when code is pushed or a pull request is opened
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "master"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "master"]
 
 jobs:
   check-prettier:
