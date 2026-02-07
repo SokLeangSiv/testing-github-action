@@ -1,52 +1,45 @@
 name: Prettier & Build CI
 
-# Run when code is pushed or a pull request is opened
 on:
   push:
-    branches: ['main', 'master']
+    branches: ["main", "master"]
   pull_request:
-    branches: ['main', 'master']
+    branches: ["main", "master"]
 
 jobs:
   check-prettier:
-    name: Check Prettier formatting
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout your code
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Setup Node
-      - name: Setup Node.js
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Make sure this matches your project
+          node-version: "20"
 
-      # 3. Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # 4. Run Prettier in check mode
-      - name: Run Prettier formatting check
+      - name: Run Prettier
         run: npm run format:check
 
   build-nextjs:
-    name: Build Next.js app
     runs-on: ubuntu-latest
     needs: check-prettier
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "20"
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Next.js project
+      - name: Build Next.js
         run: npm run build
